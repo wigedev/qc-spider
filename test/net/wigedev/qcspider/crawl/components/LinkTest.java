@@ -1,22 +1,22 @@
 package net.wigedev.qcspider.crawl.components;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class LinkTest
+class LinkTest
 {
     private URL testURL;
     private URL testSource;
     private Link sut;
 
-    @Before
-    public void before() throws Exception
+    @BeforeEach
+    void before() throws Exception
     {
         this.testURL = new URL("http://www.test.com");
         this.testSource = new URL("http://www.test.com/test");
@@ -24,7 +24,7 @@ public class LinkTest
     }
 
     @Test
-    public void canAddSource() throws Exception
+    void canAddSource() throws Exception
     {
         URL testPage2 = new URL("http://www.test.com/test2");
         this.sut.addReference(testPage2);
@@ -34,20 +34,20 @@ public class LinkTest
     }
 
     @Test
-    public void whenAddingDuplicateSourceThenDuplicateIgnored() throws Exception
+    void whenAddingDuplicateSourceThenDuplicateIgnored()
     {
         this.sut.addReference(testSource);
         assertEquals(1, this.sut.getReferences().size());
     }
 
     @Test
-    public void isChecked() throws Exception
+    void isChecked()
     {
         assertFalse(this.sut.isChecked());
     }
 
     @Test
-    public void canChangeStatus() throws Exception
+    void canChangeStatus()
     {
         assertEquals(0, this.sut.getStatusCode());
         this.sut.setStatusCode(200);
@@ -55,13 +55,13 @@ public class LinkTest
     }
 
     @Test
-    public void canGetURL() throws Exception
+    void canGetURL()
     {
         assertEquals(this.testURL.toString(), this.sut.getURL());
     }
 
     @Test
-    public void canSetAndGetStatusMessage() throws Exception
+    void canSetAndGetStatusMessage()
     {
         String testMessage = "Test message";
         this.sut.setStatusMessage(testMessage);
@@ -69,7 +69,7 @@ public class LinkTest
     }
 
     @Test
-    public void whenRedirectionURLSameAsOriginalURLThenNoRedirection() throws Exception
+    void whenRedirectionURLSameAsOriginalURLThenNoRedirection()
     {
         URL redirectionURL = this.testURL;
         sut.setRedirectURL(redirectionURL);
@@ -78,7 +78,7 @@ public class LinkTest
     }
 
     @Test
-    public void canSetAndGetRedirection() throws Exception
+    void canSetAndGetRedirection() throws Exception
     {
         String redirectionString = this.testURL.toString() + "?redir=1";
         URL redirectionURL = new URL(redirectionString);
@@ -88,7 +88,7 @@ public class LinkTest
     }
 
     @Test
-    public void canSetAndGetScreenshot() throws Exception
+    void canSetAndGetScreenshot()
     {
         File screenshotFile = new File("testpath");
         sut.setScreenshot(screenshotFile);
@@ -96,7 +96,7 @@ public class LinkTest
     }
 
     @Test
-    public void whenScreenshotSetThenAccessTimeSet() throws Exception
+    void whenScreenshotSetThenAccessTimeSet()
     {
         File screenshotFile = new File("testpath");
         assertNull(sut.getAccessTime());

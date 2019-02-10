@@ -1,34 +1,34 @@
 package net.wigedev.qcspider.crawl.components;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.net.URL;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MalformedLinkTest
+class MalformedLinkTest
 {
     private String testURL;
     private URL testSource;
 
-    @Before
-    public void before() throws Exception
+    @BeforeEach
+    void before() throws Exception
     {
         this.testURL = "hotp://example.co";
         this.testSource = new URL("http://test.com");
     }
 
     @Test
-    public void returnsTheProvidedURL() throws Exception
+    void returnsTheProvidedURL()
     {
         MalformedLink sut = new MalformedLink(testURL, testSource);
         assertEquals(this.testURL, sut.getURL());
     }
 
     @Test
-    public void returnsSourceFromConstructor() throws Exception
+    void returnsSourceFromConstructor()
     {
         MalformedLink sut = new MalformedLink(testURL, testSource);
         ArrayList<URL> test_sources = sut.getReferences();
@@ -37,7 +37,7 @@ public class MalformedLinkTest
     }
 
     @Test
-    public void returnsAddedSource() throws Exception
+    void returnsAddedSource() throws Exception
     {
         MalformedLink sut = new MalformedLink(testURL, testSource);
         URL testSource2 = new URL("http://test2.com");

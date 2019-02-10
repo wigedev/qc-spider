@@ -2,6 +2,7 @@ package net.wigedev.qcspider;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.Contract;
 
 public class Main extends Application
 {
@@ -10,6 +11,7 @@ public class Main extends Application
     private static Main app;
     private Stage stage;
 
+    @Contract(pure = true)
     public static Main i()
     {
         return app;
