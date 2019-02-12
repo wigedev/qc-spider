@@ -1,4 +1,4 @@
-package net.wigedev.qcspider.crawl.components;
+package qcspider.spider.components;
 
 import java.net.URL;
 
@@ -10,11 +10,11 @@ public class Site
     /**
      * This is the URL the scan is starting from
      */
-    private URL startURL;
+    private URL    startURL;
     /**
      * This is the URL the starting request was redirected to.
      */
-    private URL redirectURL;
+    private URL    redirectURL;
     /**
      * This is the domain of the site. Only links within this domain will be considered valid for crawling.
      */

@@ -1,9 +1,9 @@
-package net.wigedev.qcspider.crawl.components;
+package qcspider.spider.components;
 
 import java.net.URL;
 
 /**
- * Malfomred link objects represent links that are found which do not point to valid URLs
+ * Malformed link objects represent links that are found which do not point to valid URLs
  */
 public class MalformedLink extends Link
 {

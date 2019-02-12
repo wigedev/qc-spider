@@ -1,8 +1,6 @@
-package net.wigedev.qcspider.crawl;
+package qcspider.spider;
 
-import net.wigedev.qcspider.crawl.components.Link;
-import net.wigedev.qcspider.crawl.components.MalformedLink;
-import net.wigedev.qcspider.crawl.components.Site;
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -10,8 +8,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import qcspider.spider.components.Link;
+import qcspider.spider.components.MalformedLink;
+import qcspider.spider.components.Site;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,17 +21,17 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 
+import org.openqa.selenium.WebDriver;
+
 /**
- * A Crawl Instance represents a test of a web site
- *
- * TODO: Need to create a utility that creates the links, and removes any internal links (see screenshot method)
+ * An instance of the crawl of a site being tested.
  */
 public class CrawlInstance
 {
     /**
      * Reference to the site object
      */
-    private Site site;
+    private Site                  site;
     /**
      * Array of detected links
      */
@@ -43,25 +43,25 @@ public class CrawlInstance
     /**
      * The number of errors encountered during the running of the test
      */
-    private int errorCount;
+    private int                   errorCount;
     /**
      * Reference to the WebDriver
      */
-    private WebDriver driver;
+    private WebDriver             driver;
     /**
      * The start time of the test
      */
-    private Calendar startTime;
+    private Calendar              startTime;
     /**
      * The end time of the test
      */
-    private Calendar endTime;
+    private Calendar              endTime;
 
     /**
      * @param site The Site being crawled
      * @throws IOException If the first page can't be crawled.
      */
-    CrawlInstance(Site site) throws IOException
+    CrawlInstance(@NotNull Site site) throws IOException
     {
         this.site = site;
         links = new HashMap<String, Link>(15);
@@ -155,7 +155,7 @@ public class CrawlInstance
         // Try to process
         try {
             Connection connection = Jsoup.connect(link.getURL());
-            Document doc = connection.get();
+            Document   doc        = connection.get();
             link.setStatusCode(connection.response().statusCode());
             link.setStatusMessage(connection.response().statusMessage());
             link.setRedirectURL(connection.response().url());

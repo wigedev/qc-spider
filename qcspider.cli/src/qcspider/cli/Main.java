@@ -1,4 +1,4 @@
-package net.wigedev.qcspider;
+package qcspider.cli;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

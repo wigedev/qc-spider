@@ -1,4 +1,4 @@
-package net.wigedev.qcspider.crawl.components;
+package qcspider.spider.components;
 
 import java.io.File;
 import java.net.URL;
@@ -13,21 +13,21 @@ public class Link
     /**
      * The URL of the link
      */
-    private URL url;
+    private URL            url;
     /**
      * The URL requests for the link are redirected to
      */
-    private URL redirectURL;
+    private URL            redirectURL;
     /**
      * The status code returned when the link was requested
      * TODO: What code is stored when the link is redirected?
      */
-    private int statusCode;
+    private int            statusCode;
     /**
      * The status message returned when the link was requested
      * TODO: What message is stored when the link is redirected
      */
-    private String statusMessage;
+    private String         statusMessage;
     /**
      * List of pages the link was found on
      */
@@ -35,11 +35,11 @@ public class Link
     /**
      * Screenshot of the page
      */
-    private File screenshot;
+    private File           screenshot;
     /**
      * The time the page was screenshotted
      */
-    private Calendar accessTime;
+    private Calendar       accessTime;
 
     /**
      *

@@ -1,7 +1,7 @@
-package net.wigedev.qcspider.crawl;
+package qcspider.spider;
 
-import net.wigedev.qcspider.Main;
-import net.wigedev.qcspider.crawl.components.Site;
+import qcspider.cli.Main;
+import qcspider.spider.components.Site;
 
 import java.io.IOException;
 
