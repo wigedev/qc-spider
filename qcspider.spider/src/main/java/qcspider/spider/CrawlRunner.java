@@ -1,6 +1,7 @@
 package qcspider.spider;
 
-import qcspider.cli.Main;
+import qcspider.spider.crawl.CrawlInstance;
+import qcspider.gui.Main;
 import qcspider.spider.components.Site;
 
 import java.io.IOException;

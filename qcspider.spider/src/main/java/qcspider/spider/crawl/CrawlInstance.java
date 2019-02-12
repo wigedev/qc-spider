@@ -1,4 +1,4 @@
-package qcspider.spider;
+package qcspider.spider.crawl;
 
 import org.jetbrains.annotations.NotNull;
 import org.jsoup.Connection;
@@ -61,7 +61,7 @@ public class CrawlInstance
      * @param site The Site being crawled
      * @throws IOException If the first page can't be crawled.
      */
-    CrawlInstance(@NotNull Site site) throws IOException
+    public CrawlInstance(@NotNull Site site) throws IOException
     {
         this.site = site;
         links = new HashMap<String, Link>(15);
@@ -75,7 +75,7 @@ public class CrawlInstance
     /**
      * Execute the testing process
      */
-    void run()
+    public void run()
     {
         startTime = Calendar.getInstance();
         startWebDriver();

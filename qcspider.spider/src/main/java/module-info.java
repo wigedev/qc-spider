@@ -3,7 +3,7 @@ module qcspider.spider {
     requires selenium.api;
     requires selenium.firefox.driver;
     requires org.jsoup;
-    requires qcspider.cli;
+    requires qcspider.gui;
 
     exports qcspider.spider;
 }
