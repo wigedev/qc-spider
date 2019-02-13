@@ -49,7 +49,7 @@
         </dependency>
         <dependency>
             <groupId>net.wigedev.qcspider</groupId>
-            <artifactId>qcspider.userinterface</artifactId>
+            <artifactId>qcspider.gui</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
