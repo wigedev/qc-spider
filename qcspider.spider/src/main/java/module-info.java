@@ -6,4 +6,5 @@ module qcspider.spider {
     requires qcspider.gui;
 
     exports qcspider.spider;
+    exports qcspider.spider.appinfo;
 }
