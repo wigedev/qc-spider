@@ -7,4 +7,8 @@ module qcspider.spider {
 
     exports qcspider.spider;
     exports qcspider.spider.appinfo;
+    exports qcspider.spider.components;
+    exports qcspider.spider.crawl;
+    exports qcspider.spider.userinterface;
+    exports qcspider.spider.sitedefinition;
 }

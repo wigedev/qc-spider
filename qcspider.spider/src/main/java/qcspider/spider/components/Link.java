@@ -51,7 +51,7 @@ public class Link
         this.url = url;
         this.statusCode = 0;
         this.statusMessage = "Not Requested";
-        references = new ArrayList<URL>();
+        references = new ArrayList<>();
         references.add(reference);
     }
 

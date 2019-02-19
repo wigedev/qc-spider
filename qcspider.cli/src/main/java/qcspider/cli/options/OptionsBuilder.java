@@ -13,12 +13,17 @@ public class OptionsBuilder
     public static Options getOptions()
     {
         Options options = new Options();
-        options.addOption(new Option("help", "Print this help."));
-        options.addOption(new Option("v", "Display version information."));
+        options.addOption(new Option("h", "help", false, "Print this help."));
+        options.addOption(new Option("v", "version", false, "Display version information."));
         options.addOption(
-                Option.builder().argName("crawl").hasArg().desc("The path (relative or absolute) to the crawl settings file.").required().build()
+                Option.builder("c")
+                      .longOpt("crawl")
+                      .desc("Crawl the remote site as defined in the config file")
+                      .hasArg()
+                      .argName("config-path")
+                      .build()
                          );
-        options.addOption(new Option("template", "Output a crawl settings template in the currend directory"));
+        options.addOption(new Option("t", "template", false, "Output a crawl settings template in the current directory"));
         return options;
     }
 
@@ -32,7 +37,7 @@ public class OptionsBuilder
 
     /**
      * Outputs the help screen from the passed options.
-     * @param options
+     * @param options The list of optons
      */
     public static void showHelp(Options options)
     {

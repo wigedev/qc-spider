@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.wigedev.qcspider</groupId>
     <artifactId>qc-spider</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>QCSpider</name>
@@ -14,7 +14,7 @@
         <module>qcspider.cli</module>
         <module>qcspider.gui</module>
         <module>qcspider.spider</module>
-        <module>qcspider.cli</module>
+        <module>qcspider.swing</module>
     </modules>
 
     <dependencies>

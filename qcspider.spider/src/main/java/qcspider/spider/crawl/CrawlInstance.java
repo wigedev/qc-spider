@@ -64,11 +64,11 @@ public class CrawlInstance
     public CrawlInstance(@NotNull Site site) throws IOException
     {
         this.site = site;
-        links = new HashMap<String, Link>(15);
+        links = new HashMap<>(15);
         Link firstLink = new Link(site.getStartURL(), site.getStartURL());
         checkSiteRedirect();
         links.put(firstLink.getURL(), firstLink);
-        externalLinks = new HashMap<String, Link>(2);
+        externalLinks = new HashMap<>(2);
         this.errorCount = 0;
     }
 
@@ -79,7 +79,6 @@ public class CrawlInstance
     {
         startTime = Calendar.getInstance();
         startWebDriver();
-        //noinspection ForLoopReplaceableByForEach Done this way to prevent concurrent update exception
         for (int i = 0; i < links.size(); i++) {
             Link current_link = this.links.get(i); // TODO: Fix the retrieval method
             processLink(current_link);

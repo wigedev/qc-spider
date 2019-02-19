@@ -1,8 +1,9 @@
-package qcspider.spider;
+package qcspider.spider.crawl;
 
 import qcspider.spider.crawl.CrawlInstance;
 import qcspider.gui.Main;
 import qcspider.spider.components.Site;
+import qcspider.spider.userinterface.UserInterfaceInterface;
 
 import java.io.IOException;
 
@@ -12,10 +13,10 @@ import java.io.IOException;
  */
 public class CrawlRunner implements Runnable
 {
-    private final Main app;
+    private final UserInterfaceInterface app;
     private final Site site;
 
-    public CrawlRunner(Site site, Main app)
+    public CrawlRunner(Site site, UserInterfaceInterface app)
     {
         this.site = site;
         this.app = app;

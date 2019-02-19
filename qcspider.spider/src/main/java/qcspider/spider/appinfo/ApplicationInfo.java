@@ -6,5 +6,5 @@ package qcspider.spider.appinfo;
 public class ApplicationInfo
 {
     public static final String APPLICATION_NAME = "QC Spider";
-    public static final String APPLICATION_VERSION = "1.0-SNAPSHOT";
+    public static final String APPLICATION_VERSION = "1.0.0-SNAPSHOT";
 }

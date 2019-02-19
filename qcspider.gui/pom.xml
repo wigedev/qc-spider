@@ -5,7 +5,7 @@
     <parent>
         <groupId>net.wigedev.qcspider</groupId>
         <artifactId>qc-spider</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>qcspider.gui</artifactId>
