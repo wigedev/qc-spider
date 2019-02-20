@@ -3,6 +3,7 @@ package qcspider.swing.userinterface;
 import qcspider.spider.appinfo.ApplicationInfo;
 import qcspider.spider.sitedefinition.SiteDefinitionException;
 import qcspider.spider.userinterface.LogLevel;
+import qcspider.spider.userinterface.UserInterfaceInterface;
 import qcspider.swing.Main;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UserInterface extends JFrame implements ActionListener
+public class UserInterface extends JFrame implements ActionListener, UserInterfaceInterface
 {
     /**
      * Reference to the app itself
@@ -57,7 +58,7 @@ public class UserInterface extends JFrame implements ActionListener
                 buttonPanel.startTestingButton.setText("Start Testing");
                 buttonPanel.enableTesting(true);
             } catch (SiteDefinitionException e1) {
-                setOutput(e1.getMessage(), LogLevel.ERROR);
+                addMessage(e1.getMessage(), LogLevel.ERROR);
             }
         } else if (e.getSource() == buttonPanel.startTestingButton) {
             buttonPanel.startTestingButton.setText("Stop Testing");
@@ -70,9 +71,9 @@ public class UserInterface extends JFrame implements ActionListener
      *
      * @param message The message string to be displayed
      */
-    public void setOutput(String message)
+    public void addMessage(String message)
     {
-        logPanel.setOutput(message, LogLevel.MESSAGE);
+       addMessage(message, LogLevel.MESSAGE);
     }
 
     /**
@@ -81,7 +82,7 @@ public class UserInterface extends JFrame implements ActionListener
      * @param message The message string to be displayed
      * @param level The level of the message
      */
-    public void setOutput(String message, LogLevel level)
+    public void addMessage(String message, LogLevel level)
     {
         logPanel.setOutput(message, level);
     }

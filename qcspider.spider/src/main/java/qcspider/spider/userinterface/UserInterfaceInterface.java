@@ -15,5 +15,5 @@ public interface UserInterfaceInterface
     /**
      * Add a message to the UI with a specific severity level
      */
-    public void addMessage(String message, int severity);
+    public void addMessage(String message, LogLevel level);
 }
