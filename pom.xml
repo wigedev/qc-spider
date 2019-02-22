@@ -15,6 +15,7 @@
         <module>qcspider.gui</module>
         <module>qcspider.spider</module>
         <module>qcspider.swing</module>
+        <module>qcspider.screenshotreport</module>
     </modules>
 
     <dependencies>
