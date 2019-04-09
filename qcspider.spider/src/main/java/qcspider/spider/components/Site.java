@@ -10,15 +10,15 @@ public class Site
     /**
      * This is the URL the scan is starting from
      */
-    private URL    startURL;
-    /**
-     * This is the URL the starting request was redirected to.
-     */
-    private URL    redirectURL;
+    private final URL startURL;
     /**
      * This is the domain of the site. Only links within this domain will be considered valid for crawling.
      */
-    private String rootDomain;
+    private final String rootDomain;
+    /**
+     * This is the URL the starting request was redirected to.
+     */
+    private URL redirectURL;
 
     public Site(URL startURL)
     {
@@ -28,7 +28,18 @@ public class Site
     }
 
     /**
+     * Get the URL the initial request was sent to
+     *
+     * @return The redirection URL
+     */
+    public URL getRedirectURL()
+    {
+        return redirectURL;
+    }
+
+    /**
      * Update the redirect URL with a new URL.
+     *
      * @param redirectURL The new URL
      */
     public void setRedirectURL(URL redirectURL)
@@ -39,16 +50,8 @@ public class Site
     }
 
     /**
-     * Get the URL the initial request was sent to
-     * @return The redirection URL
-     */
-    public URL getRedirectURL()
-    {
-        return redirectURL;
-    }
-
-    /**
      * Check if the request was redirected
+     *
      * @return True if the request was redirected
      */
     public boolean wasRedirected()
@@ -58,6 +61,7 @@ public class Site
 
     /**
      * Get the starting URL for the crawl
+     *
      * @return The starting URL
      */
     public URL getStartURL()
@@ -67,6 +71,7 @@ public class Site
 
     /**
      * Get the root domain of the start URL
+     *
      * @return The root domain
      */
     public String getRootDomain()

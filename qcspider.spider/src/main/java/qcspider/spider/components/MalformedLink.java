@@ -3,14 +3,16 @@ package qcspider.spider.components;
 import java.net.URL;
 
 /**
- * Malformed link objects represent links that are found which do not point to valid URLs
+ * Malformed link objects represent links that are found which do not point to valid URLs. These do not include links
+ * that point to missing pages, but only to URLs that can not be processed by the system because of typos or similar
+ * issues.
  */
 public class MalformedLink extends Link
 {
     /**
      * The "url" the link points to
      */
-    private String url;
+    private final String url;
 
     /**
      * @param url       The link destination

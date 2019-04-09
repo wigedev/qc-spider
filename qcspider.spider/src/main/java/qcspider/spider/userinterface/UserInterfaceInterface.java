@@ -10,10 +10,10 @@ public interface UserInterfaceInterface
     /**
      * Add a message to the UI
      */
-    public void addMessage(String message);
+    void addMessage(String message);
 
     /**
      * Add a message to the UI with a specific severity level
      */
-    public void addMessage(String message, LogLevel level);
+    void addMessage(String message, LogLevel level);
 }

@@ -6,8 +6,8 @@ import org.jetbrains.annotations.Contract;
 
 public class Main extends Application
 {
-    public static final String APPLICATION_NAME = "QC Spider";
-    public static final String APPLICATION_VERSION = "0.0.1";
+    private static final String APPLICATION_NAME = "QC Spider";
+    private static final String APPLICATION_VERSION = "0.0.1";
     private static Main app;
     private Stage stage;
 
@@ -22,7 +22,7 @@ public class Main extends Application
         app = this;
     }
 
-    public void start(Stage primaryStage) throws Exception
+    public void start(Stage primaryStage)
     {
         stage = primaryStage;
         stage.setTitle(APPLICATION_NAME + " v" + APPLICATION_VERSION);
@@ -33,7 +33,7 @@ public class Main extends Application
      */
     public void showSettings()
     {
-
+        //TODO: implement
     }
 
     /**
@@ -41,6 +41,6 @@ public class Main extends Application
      */
     public void showOutput()
     {
-
+        //TODO: implement
     }
 }

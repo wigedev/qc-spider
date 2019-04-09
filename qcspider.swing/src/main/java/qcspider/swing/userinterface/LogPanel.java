@@ -7,7 +7,7 @@ import javax.swing.text.*;
 import java.awt.*;
 import java.util.HashMap;
 
-public class LogPanel extends JPanel
+class LogPanel extends JPanel
 {
     private AbstractDocument doc;
 

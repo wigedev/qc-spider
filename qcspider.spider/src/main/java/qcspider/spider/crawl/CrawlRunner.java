@@ -1,7 +1,5 @@
 package qcspider.spider.crawl;
 
-import qcspider.spider.crawl.CrawlInstance;
-import qcspider.gui.Main;
 import qcspider.spider.components.Site;
 import qcspider.spider.userinterface.UserInterfaceInterface;
 

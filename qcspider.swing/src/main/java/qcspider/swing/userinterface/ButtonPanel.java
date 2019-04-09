@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class ButtonPanel extends JPanel
+class ButtonPanel extends JPanel
 {
-    JButton setConfigurationButton;
-    JButton startTestingButton;
+    final JButton setConfigurationButton;
+    final JButton startTestingButton;
 
     ButtonPanel()
     {

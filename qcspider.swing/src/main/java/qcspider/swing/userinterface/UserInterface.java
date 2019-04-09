@@ -16,15 +16,15 @@ public class UserInterface extends JFrame implements ActionListener, UserInterfa
     /**
      * Reference to the app itself
      */
-    private Main app;
+    private final Main app;
     /**
      * The log panel where output is displayed to the user
      */
-    private LogPanel logPanel;
+    private final LogPanel logPanel;
     /**
      * The button panel for the user to click things
      */
-    private ButtonPanel buttonPanel;
+    private final ButtonPanel buttonPanel;
 
     public UserInterface(Main app)
     {
@@ -57,10 +57,12 @@ public class UserInterface extends JFrame implements ActionListener, UserInterfa
                 // If there is no error, enable the start scan button
                 buttonPanel.startTestingButton.setText("Start Testing");
                 buttonPanel.enableTesting(true);
-            } catch (SiteDefinitionException e1) {
+            }
+            catch (SiteDefinitionException e1) {
                 addMessage(e1.getMessage(), LogLevel.ERROR);
             }
-        } else if (e.getSource() == buttonPanel.startTestingButton) {
+        }
+        else if (e.getSource() == buttonPanel.startTestingButton) {
             buttonPanel.startTestingButton.setText("Stop Testing");
             this.app.runScans();
         }
@@ -73,14 +75,14 @@ public class UserInterface extends JFrame implements ActionListener, UserInterfa
      */
     public void addMessage(String message)
     {
-       addMessage(message, LogLevel.MESSAGE);
+        addMessage(message, LogLevel.MESSAGE);
     }
 
     /**
      * Sets output to be displayed to the user.
      *
      * @param message The message string to be displayed
-     * @param level The level of the message
+     * @param level   The level of the message
      */
     public void addMessage(String message, LogLevel level)
     {

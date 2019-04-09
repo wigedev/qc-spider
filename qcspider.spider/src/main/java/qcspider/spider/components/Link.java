@@ -13,37 +13,36 @@ public class Link
     /**
      * The URL of the link
      */
-    private URL            url;
+    private final URL url;
+    /**
+     * List of pages the link was found on
+     */
+    private final ArrayList<URL> references;
     /**
      * The URL requests for the link are redirected to
      */
-    private URL            redirectURL;
+    private URL redirectURL;
     /**
      * The status code returned when the link was requested
      * TODO: What code is stored when the link is redirected?
      */
-    private int            statusCode;
+    private int statusCode;
     /**
      * The status message returned when the link was requested
      * TODO: What message is stored when the link is redirected
      */
-    private String         statusMessage;
-    /**
-     * List of pages the link was found on
-     */
-    private ArrayList<URL> references;
+    private String statusMessage;
     /**
      * Screenshot of the page
      */
-    private File           screenshot;
+    private File screenshot;
     /**
      * The time the page was screenshotted
      */
-    private Calendar       accessTime;
+    private Calendar accessTime;
 
     /**
-     *
-     * @param url The link destination
+     * @param url       The link destination
      * @param reference The page where the link was discovered
      */
     public Link(URL url, URL reference)
@@ -57,11 +56,12 @@ public class Link
 
     /**
      * Add a new reference to the link.
+     *
      * @param reference The URL of the page linking here
      */
     public void addReference(URL reference)
     {
-        for (URL testPage: references) {
+        for (URL testPage : references) {
             if (testPage.toString().equals(reference.toString())) {
                 return;
             }
@@ -72,12 +72,14 @@ public class Link
     /**
      * Get a list of references to this link
      */
-    public ArrayList<URL> getReferences() {
+    public ArrayList<URL> getReferences()
+    {
         return references;
     }
 
     /**
      * Check if the link has already been checked
+     *
      * @return True if the link has been checked
      */
     public boolean isChecked()
@@ -86,16 +88,8 @@ public class Link
     }
 
     /**
-     * Set the status code
-     * @param statusCode The status code
-     */
-    public void setStatusCode(int statusCode)
-    {
-        this.statusCode = statusCode;
-    }
-
-    /**
      * Get the status code
+     *
      * @return The status code
      */
     public int getStatusCode()
@@ -104,16 +98,18 @@ public class Link
     }
 
     /**
-     * Set the status message
-     * @param statusMessage The status message
+     * Set the status code
+     *
+     * @param statusCode The status code
      */
-    public void setStatusMessage(String statusMessage)
+    public void setStatusCode(int statusCode)
     {
-        this.statusMessage = statusMessage;
+        this.statusCode = statusCode;
     }
 
     /**
      * Get the status message
+     *
      * @return The status message
      */
     public String getStatusMessage()
@@ -122,7 +118,28 @@ public class Link
     }
 
     /**
+     * Set the status message
+     *
+     * @param statusMessage The status message
+     */
+    public void setStatusMessage(String statusMessage)
+    {
+        this.statusMessage = statusMessage;
+    }
+
+    /**
+     * Get the URL the request was redirected to
+     *
+     * @return The URL the request was redirected to
+     */
+    public URL getRedirectURL()
+    {
+        return redirectURL;
+    }
+
+    /**
      * Set the URL the request was redirected to
+     *
      * @param redirectURL The URL the request was redirected to
      */
     public void setRedirectURL(URL redirectURL)
@@ -130,15 +147,6 @@ public class Link
         if (!url.toString().equals(redirectURL.toString())) {
             this.redirectURL = redirectURL;
         }
-    }
-
-    /**
-     * Get the URL the request was redirected to
-     * @return The URL the request was redirected to
-     */
-    public URL getRedirectURL()
-    {
-        return redirectURL;
     }
 
     /**
@@ -151,6 +159,7 @@ public class Link
 
     /**
      * Get the URL the link points to
+     *
      * @return The URL the link pints to
      */
     public String getURL()
@@ -163,19 +172,20 @@ public class Link
         return url;
     }
 
+    public File getScreenshot()
+    {
+        return screenshot;
+    }
+
     public void setScreenshot(File screenshot)
     {
         this.screenshot = screenshot;
         accessTime = Calendar.getInstance();
     }
 
-    public File getScreenshot()
-    {
-        return screenshot;
-    }
-
     /**
      * Get the time when the page was accessed to generate the screenshot
+     *
      * @return The time the page was accessed
      */
     public Calendar getAccessTime()

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 abstract public class AbstractSiteDefinitionFile implements SiteDefinitionInterface
 {
-    File file;
-    ArrayList<String> errors;
+    final File file;
+    final ArrayList<String> errors;
 
     AbstractSiteDefinitionFile(File file)
     {

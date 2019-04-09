@@ -9,6 +9,7 @@ import java.io.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -17,7 +18,7 @@ public class ScreenshotReportBuilder
 {
     private final String                domain;
     private final HashMap<String, Link> links;
-    private final Object                badLinks;
+    private final HashMap<String, Link> badLinks;
     private final HashMap<String, Link> externalLinks;
     private final int errorCount;
     private final Calendar startTime;
@@ -33,7 +34,7 @@ public class ScreenshotReportBuilder
     {
         this.domain = instance.getSite().getRootDomain();
         this.links = instance.getLinks();
-        this.badLinks = instance.getBadLinks();
+        this.badLinks = instance.getMalformedLinks();
         this.externalLinks = instance.getExternalLinks();
         this.errorCount = instance.getErrorCount();
         this.startTime = instance.getStartTime();
@@ -85,9 +86,8 @@ public class ScreenshotReportBuilder
      * Generate a name for the zip file that will contain the report
      * @param domain The domain that was tested
      * @return The file name
-     * @throws FileNotFoundException If the zip file is not found
      */
-    private String getZipFileName(String domain) throws FileNotFoundException
+    private String getZipFileName(String domain)
     {
         domain = domain.replace('.', '_');
         String filename = System.getProperty("user.home") + "/QCS-" + domain + "-" +
@@ -147,11 +147,11 @@ public class ScreenshotReportBuilder
         if (this.badLinks.size() < 1) {
             return "<p>No bad links were found in the site.</p>\n";
         }
-        StringBuilder       output = new StringBuilder();
-        Collection<BadLink> links  = this.badLinks.values();
-        for (BadLink link: links) {
-            output.append("<p><strong>" + link.getURL() + "</strong> was seen on:</p>\n<ul>\n");
-            for (URL url: link.getSources()) {
+        StringBuilder output = new StringBuilder();
+        Collection<Link> links = this.badLinks.values();
+        for (Link link : links) {
+            output.append("<p><strong>").append(link.getURL()).append("</strong> was seen on:</p>\n<ul>\n");
+            for (URL url : link.getReferences()) {
                 output.append("<li>").append(url.getPath()).append("</li>\n");
             }
             output.append("</ul>");
@@ -165,23 +165,25 @@ public class ScreenshotReportBuilder
      * @param isInternal True if the report is on the internal links
      * @return The link report HTML code
      */
+    @NotNull
     private String createLinkReport(ZipOutputStream zos, boolean isInternal)
     {
         StringBuilder            output = new StringBuilder();
         java.util.Iterator<Link> linkIterator;
         if (isInternal) {
-            linkIterator = this.links.iterator();
+            linkIterator = this.links.values().iterator();
         } else {
             linkIterator = this.externalLinks.values().iterator();
         }
         while (linkIterator.hasNext()) {
             Link link = linkIterator.next();
             String alertclass = "";
-            if (200 != link.getStatus()) alertclass = " alert";
+            if (200 != link.getStatusCode()) alertclass = " alert";
             output.append("<div class=\"linkdiv").append(alertclass).append("\"><p><strong>").append(
-                    link.getURL().toString());
+                    link.getURL());
             output.append("<br><span class=\"status").append(alertclass).append("\">");
-            output.append(" Status: " + link.getStatus() + " (" + link.getStatusMessage() + ")");
+            output.append(" Status: ").append(link.getStatusCode()).append(" (").append(link.getStatusMessage()).append(
+                    ")");
             output.append("</span>");
             output.append("</strong></p>\n");
             Calendar accessTime = link.getAccessTime();
@@ -191,10 +193,11 @@ public class ScreenshotReportBuilder
                 output.append("<p>Retrieved on: ").append(accessTime.getTime()).append("</p>\n");
             }
             if (link.wasRedirected()) {
-                output.append("<p>This link URL auto redirects to: " + link.getRedirectionURL().toString() + "</p>\n");
+                output.append("<p>This link URL auto redirects to: ").append(link.getRedirectURL().toString()).append(
+                        "</p>\n");
             }
             output.append("<p>This page was linked to from:</p>\n<ul>\n");
-            for (URL url: link.getSources()) {
+            for (URL url : link.getReferences()) {
                 output.append("<li>").append(url.toString()).append("</li>\n");
             }
             output.append("</ul>");
